@@ -140,6 +140,145 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux基础知识总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/04/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">Linux基础知识总结</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/04/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2024-03-04T14:22:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是-bashrc文件"><a href="#什么是-bashrc文件" class="headerlink" title="什么是.bashrc文件"></a>什么是.bashrc文件</h3><blockquote>
+<p>.bashrc对linux普通用户来说，是一个配置文件，当你登录这个用户的时候，系统会率先执行该文件。因此用户可以用.bashrc自定义来配置shell环境。</p>
+<p>比如指定一些路径，再比如设置一些短命令。需要注意的是，修改完.bashrc后，需要执行 source .bashrc来加载使之生效。</p>
+</blockquote>
+<h5 id="在Linux中，”cc”是C语言编译器的默认命令别名。它通常指向系统上安装的C编译器，如GCC（GNU-Compiler-Collection）或Clang。使用”cc”命令可以编译和链接C语言程序。"><a href="#在Linux中，”cc”是C语言编译器的默认命令别名。它通常指向系统上安装的C编译器，如GCC（GNU-Compiler-Collection）或Clang。使用”cc”命令可以编译和链接C语言程序。" class="headerlink" title="在Linux中，”cc”是C语言编译器的默认命令别名。它通常指向系统上安装的C编译器，如GCC（GNU Compiler Collection）或Clang。使用”cc”命令可以编译和链接C语言程序。"></a>在Linux中，”cc”是C语言编译器的默认命令别名。它通常指向系统上安装的C编译器，如GCC（GNU Compiler Collection）或Clang。使用”cc”命令可以编译和链接C语言程序。</h5><p>例如，要编译名为”hello.c”的C程序，可以使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cc hello.c -o hello</span><br></pre></td></tr></table></figure>
+
+<p>之后会生成hello的可执行文件。（不指定-o，则会默认生成可执行文件 **a.out **）</p>
+<hr>
+<h3 id="库函数和系统调用"><a href="#库函数和系统调用" class="headerlink" title="库函数和系统调用"></a>库函数和系统调用</h3><p>系统调用：<strong>操作系统提供的接口</strong>。</p>
+<p>实现一个功能要调用好多系统调用，因此继续封装，这就有了库函数。</p>
+<p>CPU有两种运行模式：一种是内核模式；另一种是用户模式。</p>
+<p><strong>上下文切换：系统调用必须从用户模式切换到内核模式下运行。</strong></p>
+<h3 id="Linux启动"><a href="#Linux启动" class="headerlink" title="Linux启动"></a>Linux启动</h3><p>Linux内核启动的时候，建立一个init进程，是1号进程，没有0号进程。</p>
+<p>然后所有其他的进程都是从init进程中fork出来的。就像Linux的文件系统一样，Linux的进程也构成了一个树形结构。</p>
+<h3 id="Linux基础命令。"><a href="#Linux基础命令。" class="headerlink" title="Linux基础命令。"></a>Linux基础命令。</h3><p>如何了解一个命令？</p>
+<p>有两种方法，一种是 whatis，一种是man。</p>
+<p>whatis是一种简单的查询方式；man是一种复杂的查询方式。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">whatis <span class="built_in">ls</span></span><br><span class="line"><span class="built_in">man</span> <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="终止和暂停命令"><a href="#终止和暂停命令" class="headerlink" title="终止和暂停命令"></a>终止和暂停命令</h5><p>终止命令：ctrl + c</p>
+<p>暂停命令： ctrl + z</p>
+<h5 id="查看可执行命令的位置"><a href="#查看可执行命令的位置" class="headerlink" title="查看可执行命令的位置"></a>查看可执行命令的位置</h5><p>which</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which <span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="poll和select"><a href="#poll和select" class="headerlink" title="poll和select"></a>poll和select</h3><p>poll和select都是多路复用的系统调用，用于在一个线程中同时监听多个IO事件。</p>
+<p>当有事件发生，两个函数都会返回事件发生的文件描述符的列表。</p>
+<blockquote>
+<p>在等待事件的时候，poll或select是阻塞状态的，当然不会一直阻塞，可以设置超时参数。</p>
+</blockquote>
+<p>两者的区别：</p>
+<ol>
+<li>select的最大文件描述符数受到限制。poll没有限制。需要同时监听大量文件描述符的时候，推荐使用poll</li>
+<li>select的效率低于poll</li>
+<li>select的可移植性好，一些老的系统可能不支持poll</li>
+</ol>
+<hr>
+<h3 id="多线程通信"><a href="#多线程通信" class="headerlink" title="多线程通信"></a>多线程通信</h3><ol>
+<li>共享内存：生产者-消费者模型。生产者线程将数据写入共享内存，消费者线程从共享内存中读取数据。shmget 是一个系统调用，用来创建共享内存。</li>
+<li>消息队列：网络编程中，服务端线程通过消息队列将收到的客户端线程的消息发给处理线程进行处理。msgget是一个系统调用，用来创建一个消息队列。</li>
+<li>信号量：（<strong>保证原子操作</strong>）sem_init 是一个初始化信号量的函数。多个线程访问或修改同一个变量的时候，线程先等待信号量，然后进行操作，最后释放信号量。抱着同时只有一个线程能够访问变量，保证了线程安全。（互斥锁也是类似，互斥锁是一种二进制的同步方法，保证任意时刻只有一个线程可以访问共享变量。还有一种叫做自旋锁，自旋锁也是保证任意时刻只有一个线程访问共享变量。自旋锁和信号量不同的是，自旋锁不会使线程阻塞，而是一直自旋等待，直到锁被释放，获取到锁为止。自旋锁减少了线程上下文切换的开销，适用于临界区很小，持有锁的事件很短的情况，比如一些赋值、判断等语句）<blockquote>
+<p>信号量和互斥锁的区别：</p>
+<ol>
+<li>互斥锁一次只允许一个线程访问共享资源；信号量是可以限制同时访问共享资源的线程数，允许多个线程同时访问。</li>
+<li>互斥锁只有两种状态（锁定，放锁）；信号量可以有多种状态。</li>
+</ol>
+</blockquote>
+</li>
+<li>条件变量：适用场景：<strong>当一个线程需要等待另一个线程的特定条件发生时，可以使用条件变量进行多线程通信</strong>。比如生产者-消费者模型。生产者生产完成，然后notify()通知给消费者。消费者此前一直处于wait()等待状态。通过<strong>条件变量</strong>的 wait()、notify() 和 notifyAll() 方法，实现了生产者与消费者之间的同步与通信。<blockquote>
+<p>在生产者-消费者模型中，使用条件变量或者共享内存都可以实现通信。两者区别之处在于：</p>
+<ol>
+<li>使用条件变量时，通常需要使用互斥锁来保护共享资源的访问，防止竞态条件（多线程下，程序结果依赖于线程执行顺序。如果执行顺序不一样，会导致不同的结果）。</li>
+<li>使用共享内存时，通常也是需要采用锁机制（比如互斥锁）来保护共享内存的访问，防止竞态。</li>
+<li>条件变量适用于基于特定条件的通信；</li>
+<li>共享内存适用于需要共享大量数据或者频繁读写数据的场景。</li>
+</ol>
+</blockquote>
+</li>
+<li>管道：生产者线程负责向管道发送数据，消费者线程负责从管道接收数据，通过管道实现了线程之间的通信。</li>
+<li>套接字：socket一般是用在网络通信，同一台机器上的两个线程也可以使用socket通信。</li>
+</ol>
+<h3 id="进程间通信（IPC-Inter-Process-Communication）"><a href="#进程间通信（IPC-Inter-Process-Communication）" class="headerlink" title="进程间通信（IPC Inter-Process Communication）"></a>进程间通信（IPC Inter-Process Communication）</h3><ol>
+<li>管道：匿名管道（父子进程、同父的子进程之间通信）；命名管道（无关的进程之间的通信）</li>
+<li>消息队列：（发送队列、接收队列）</li>
+<li>共享内存：缓冲区缓存（postgresql的缓冲区缓存可以视为是一种共享内存的机制）</li>
+<li>信号量</li>
+<li>socket</li>
+<li>文件锁：通过在文件上设置锁。多个进程通过获取文件锁来协调对共享文件的访问。</li>
+</ol>
+<h3 id="Linux常见信号"><a href="#Linux常见信号" class="headerlink" title="Linux常见信号"></a>Linux常见信号</h3><ol>
+<li>SIGINT：中断</li>
+<li>SIGQUIT：退出</li>
+<li>SIGTSTP：暂停</li>
+<li>SIGCONT：继续</li>
+<li>SIGALRM：定时器</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/04/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-幸福的积分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
