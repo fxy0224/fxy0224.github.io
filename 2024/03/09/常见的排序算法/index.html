@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2024 | fxy的个人博客网站</title>
+  <title>常见的排序算法 | fxy的个人博客网站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="fxy的个人博客网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fxy的个人博客网站">
-<meta property="og:url" content="http://example.com/archives/2024/index.html">
+  <meta name="description" content="冒泡排序123456789101112131415161718192021222324252627282930#include&lt;iostream&gt;#include&lt;vector&gt;using namespace std;int main() &#123;    vector&lt;int&gt; arr &#x3D; &#123;2, 7, 5, 3, 9, 4&#125;;    &#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见的排序算法">
+<meta property="og:url" content="http://example.com/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="fxy的个人博客网站">
-<meta property="og:description" content="fxy的个人博客网站">
+<meta property="og:description" content="冒泡排序123456789101112131415161718192021222324252627282930#include&lt;iostream&gt;#include&lt;vector&gt;using namespace std;int main() &#123;    vector&lt;int&gt; arr &#x3D; &#123;2, 7, 5, 3, 9, 4&#125;;    &#x2F;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-09T05:39:30.000Z">
+<meta property="article:modified_time" content="2024-03-09T05:40:50.012Z">
 <meta property="article:author" content="fxy">
+<meta property="article:tag" content="计算机技术">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="fxy的个人博客网站" type="application/atom+xml">
@@ -138,36 +141,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-常见的排序算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      常见的排序算法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
+
+        
+        <a href="/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
   	<time datetime="2024-03-09T05:39:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-09</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">常见的排序算法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">    vector&lt;int&gt; arr = &#123;2, 7, 5, 3, 9, 4&#125;;</span><br><span class="line">    /* 冒泡排序: </span><br><span class="line">     * 每次比较前后两个元素大小并排序，每循环一遍，确定将最大值排在后面，时间复杂度O(n^2)</span><br><span class="line">     * 稳定排序</span><br><span class="line">     */</span><br><span class="line">    for (int i = 0; i &lt; arr.size(); i++) &#123;</span><br><span class="line">        bool flag = false;</span><br><span class="line">        for (int j = 0; j &lt; arr.size() - i - 1; j++) &#123;  </span><br><span class="line">            if (arr[j] &gt; arr[j + 1]) &#123;</span><br><span class="line">                int temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + 1];</span><br><span class="line">                arr[j + 1] = temp;</span><br><span class="line">                flag = true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!flag)</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; &quot;排序之后：&quot;;</span><br><span class="line">    for(auto a : arr) &#123;</span><br><span class="line">        cout &lt;&lt; a &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">    vector&lt;int&gt; arr = &#123;2, 7, 5, 3, 9, 4&#125;;</span><br><span class="line">    /*选择排序</span><br><span class="line">     * 每遍历一次数组，将最小值放在最前面。时间复杂度O(n^2)</span><br><span class="line">     * 不稳定排序</span><br><span class="line">     */</span><br><span class="line">    for (int i = 0; i &lt; arr.size(); i++) &#123;</span><br><span class="line">        int minIndex = i;</span><br><span class="line">        for (int j = i + 1; j &lt; arr.size(); j++) &#123;</span><br><span class="line">            if(arr[minIndex] &gt; arr[j]) &#123;</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int temp = arr[i];</span><br><span class="line">        arr[i] = arr[minIndex];</span><br><span class="line">        arr[minIndex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; &quot;排序之后：&quot;;</span><br><span class="line">    for(auto a : arr) &#123;</span><br><span class="line">        cout &lt;&lt; a &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">    vector&lt;int&gt; arr = &#123;2, 7, 5, 3, 1, 4&#125;;</span><br><span class="line">    /*插入排序</span><br><span class="line">     * 将未排序数组一分为二，前半部分是未排序的，后半部分是排好序的。</span><br><span class="line">     * 往后遍历，每次保证前半部分已拍好序的长度累加。时间复杂度是O(n^2)</span><br><span class="line">     * 插入排序在数组顺序不是很乱的情况下是比较快的。</span><br><span class="line">     * 稳定排序</span><br><span class="line">     */</span><br><span class="line">    for (int i = 0; i &lt; arr.size() - 1;i++) &#123;</span><br><span class="line">        for (int j = i + 1; j &gt; 0; j--) &#123;</span><br><span class="line">            if (arr[j] &lt; arr[j - 1]) &#123;</span><br><span class="line">                int temp = arr[j];</span><br><span class="line">                arr[j] = arr[j - 1];</span><br><span class="line">                arr[j - 1] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; &quot;排序之后：&quot;;</span><br><span class="line">    for(auto a : arr) &#123;</span><br><span class="line">        cout &lt;&lt; a &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void MergeSort(vector&lt;int&gt;&amp; res, int p, int r);</span><br><span class="line">void MergeArray(vector&lt;int&gt;&amp; res, int p, int q, int r);</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    vector&lt;int&gt; arr = &#123;2, 71, 15, 23, 12, 4&#125;;</span><br><span class="line">    /* 归并排序</span><br><span class="line">     * 分治思想：将大数组分成左右两个数组分别排序，然后合并。</span><br><span class="line">     * 时间复杂度：o(nlogn),空间复杂度：o(n)</span><br><span class="line">     */</span><br><span class="line">    int n = arr.size();</span><br><span class="line">    MergeSort(arr, 0, n);</span><br><span class="line">    cout &lt;&lt; &quot;排序之后：&quot;;</span><br><span class="line">    for(auto a : arr) &#123;</span><br><span class="line">        cout &lt;&lt; a &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MergeSort(vector&lt;int&gt;&amp; vec, int p, int r) &#123;</span><br><span class="line">    if(p &gt;= r)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    int q = p + (r - p) / 2;</span><br><span class="line">    MergeSort(vec, p, q);</span><br><span class="line">    MergeSort(vec, q + 1, r);</span><br><span class="line">    MergeArray(vec, p, q, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MergeArray(vector&lt;int&gt;&amp; vec, int p, int q, int r) &#123;</span><br><span class="line">    vector&lt;int&gt; res(r - p + 1);</span><br><span class="line">    int k = 0;</span><br><span class="line">    int i = p;</span><br><span class="line">    int j = q + 1;</span><br><span class="line">    while (i &lt;= q &amp;&amp; j &lt;= r) &#123;</span><br><span class="line">        if (vec[i] &lt;= vec[j]) &#123;</span><br><span class="line">            res[k++] = vec[i++];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            res[k++] = vec[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    while (i &lt;= q) &#123;</span><br><span class="line">        res[k++] = vec[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    while (j &lt;= r) &#123;</span><br><span class="line">        res[k++] = vec[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt;= r - p; i++) &#123;</span><br><span class="line">        vec[p + i] = res[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void QuartSort(vector&lt;int&gt; &amp;vec, int p, int r);</span><br><span class="line">int partition(vector&lt;int&gt; &amp;vec, int p, int r);</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    vector&lt;int&gt; arr = &#123;2, 121, 115, 23, 12, 24&#125;;</span><br><span class="line">    /* 快速排序</span><br><span class="line">     * 快排也是分治的思想，对数组的任意一段，从中选一点，使得这个点左边的元素比该点小，</span><br><span class="line">     * 右边的元素比该点大。分治+递归</span><br><span class="line">     * 时间复杂度：o(nlogn), 空间复杂度：o(1)</span><br><span class="line">     */</span><br><span class="line">    int n = arr.size();</span><br><span class="line">    QuartSort(arr, 0, n - 1);</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt; &quot;排序之后：&quot;;</span><br><span class="line">    for (auto num : arr) &#123;</span><br><span class="line">        cout &lt;&lt; num &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">        return 0;</span><br><span class="line">&#125;</span><br><span class="line">void QuartSort(vector&lt;int&gt;&amp; vec, int p, int r) &#123;</span><br><span class="line">    if (p &gt;= r)</span><br><span class="line">        return;</span><br><span class="line">    int q = partition(vec, p, r);</span><br><span class="line">    QuartSort(vec, p, q - 1);</span><br><span class="line">    QuartSort(vec, q + 1, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int partition(vector&lt;int&gt;&amp; vec, int p, int r) &#123;</span><br><span class="line">    int i = p;</span><br><span class="line">    int povid = vec[r];</span><br><span class="line">    for (int j = p; j &lt; r; j++) &#123;</span><br><span class="line">        if(vec[j] &lt; povid) &#123;</span><br><span class="line">            if (j == i) &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                int temp = vec[i];</span><br><span class="line">                vec[i++] = vec[j];</span><br><span class="line">                vec[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int temp = vec[i];</span><br><span class="line">    vec[i] = vec[r];</span><br><span class="line">    vec[r] = temp;</span><br><span class="line">    return i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>thanks<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,187 +210,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/04/%E5%AE%9D%E8%B4%B5%E7%9A%84%E4%BA%BA%E7%94%9F%E6%84%8F%E8%A7%81/" class="archive-article-date">
-  	<time datetime="2024-03-04T14:30:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2024/03/04/%E5%AE%9D%E8%B4%B5%E7%9A%84%E4%BA%BA%E7%94%9F%E6%84%8F%E8%A7%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">宝贵的人生意见</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/04/%E5%AE%9D%E8%B4%B5%E7%9A%84%E4%BA%BA%E7%94%9F%E6%84%8F%E8%A7%81/">宝贵的人生意见</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/04/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2024-03-04T14:22:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/04/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">Linux基础知识总结</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/01/%E5%B9%B8%E7%A6%8F%E7%9A%84%E7%A7%AF%E5%88%86/" class="archive-article-date">
-  	<time datetime="2024-03-01T11:15:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/01/%E5%B9%B8%E7%A6%8F%E7%9A%84%E7%A7%AF%E5%88%86/">幸福的积分</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/02/29/first-md/" class="archive-article-date">
-  	<time datetime="2024-02-29T14:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/02/29/first-md/">first.md</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/02/29/hello-world/" class="archive-article-date">
-  	<time datetime="2024-02-29T13:22:49.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/02/29/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -382,8 +332,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
