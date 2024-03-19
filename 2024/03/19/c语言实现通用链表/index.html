@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2024 | fxy的个人博客网站</title>
+  <title>c语言实现通用链表 | fxy的个人博客网站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="fxy的个人博客网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fxy的个人博客网站">
-<meta property="og:url" content="http://example.com/archives/2024/index.html">
+  <meta name="description" content="c语言实现通用链表，用到了指针，函数指针。 #include&lt;stdio.h&gt; #include&lt;stdlib.h&gt;  &#x2F;* 实现通用链表 *&#x2F;  &#x2F;* 定义节点 *&#x2F; typedef struct Node &#123;     void *data;     struct Node* next; &#125; Node;  &#x2F;* 定义链表 *&#x2F; typedef stru">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c语言实现通用链表">
+<meta property="og:url" content="http://example.com/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="fxy的个人博客网站">
-<meta property="og:description" content="fxy的个人博客网站">
+<meta property="og:description" content="c语言实现通用链表，用到了指针，函数指针。 #include&lt;stdio.h&gt; #include&lt;stdlib.h&gt;  &#x2F;* 实现通用链表 *&#x2F;  &#x2F;* 定义节点 *&#x2F; typedef struct Node &#123;     void *data;     struct Node* next; &#125; Node;  &#x2F;* 定义链表 *&#x2F; typedef stru">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-19T14:20:42.000Z">
+<meta property="article:modified_time" content="2024-03-19T14:22:50.261Z">
 <meta property="article:author" content="fxy">
+<meta property="article:tag" content="计算机技术">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="fxy的个人博客网站" type="application/atom+xml">
@@ -138,36 +141,148 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-c语言实现通用链表" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      c语言实现通用链表
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+
+        
+        <a href="/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/" class="archive-article-date">
   	<time datetime="2024-03-19T14:20:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/">c语言实现通用链表</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>c语言实现通用链表，用到了指针，函数指针。</p>
+<pre><code class="c++">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
 
-        <div class="article-info info-on-right">
-          
+/* 实现通用链表 */
+
+/* 定义节点 */
+typedef struct Node &#123;
+    void *data;
+    struct Node* next;
+&#125; Node;
+
+/* 定义链表 */
+typedef struct LinkedList &#123;
+    Node *head;
+    int size;
+&#125; LinkedList;
+
+void InitLinkedList(LinkedList* list) &#123;
+    list-&gt;head = NULL;
+    list-&gt;size = 0;
+&#125;
+
+void Append(LinkedList* list, void* data) &#123;
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    newNode-&gt;data = data;
+    newNode-&gt;next = NULL;
+
+    /* 如果链表为空 */
+    if (list-&gt;head == NULL) &#123;
+        list-&gt;head = newNode;
+    &#125; else &#123;
+        Node *current = list-&gt;head;
+        while (current-&gt;next != NULL) &#123;
+            current = current-&gt;next;
+        &#125;
+        current-&gt;next = newNode;
+    &#125;
+    list-&gt;size++;
+&#125;
+
+void PrintLinkedList(LinkedList* list, void (*PrintFunc)(void*)) &#123;
+    Node* current = list-&gt;head;
+    while (current != NULL) &#123;
+        PrintFunc(current-&gt;data);
+        current = current-&gt;next;
+    &#125;
+&#125;
+
+void FreeLinkedList(LinkedList* list, void (*FreeFunc)(void*)) &#123;
+    Node *current = list-&gt;head;
+    while (current != NULL) &#123;
+        Node* temp = current;
+        current = current-&gt;next;
+        if (FreeFunc != NULL) &#123;
+            FreeFunc(temp-&gt;data);
+        &#125;
+        free(temp);
+    &#125;
+    list-&gt;head = NULL;
+    list-&gt;size = 0;
+&#125;
+
+
+void PrintInt(void* data) &#123;
+    int *value = (int *)data;
+    print(&quot;%d&quot;, *value);
+&#125;
+
+void FreeInt(void* data) &#123;
+    free(data);
+&#125;
+
+int main() &#123;
+    LinkedList list;
+    InitLinkedList(&amp;list);
+    /* 插入元素 */
+    for (int i = 0; i &lt;= 5; i++) &#123;
+        int *value = (int *)malloc(sizeof(int));
+        *value = i;
+        Append(&amp;list, value);
+    &#125;
+    
+    /* 打印元素 */
+    printf(&quot;Linkede list: &quot;);
+    PrintLinkedList(&amp;list, PrintInt);
+
+    /* 释放链表 */
+    FreeLinkedList(&amp;list, FreeInt);
+
+    return 0;
+&#125;
+</code></pre>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>thanks<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,301 +294,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/17/c-%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2024-03-16T16:01:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-17</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2024/03/17/c-%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">c++与多线程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/17/c-%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/">c++与多线程</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/09/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%92%8C%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/" class="archive-article-date">
-  	<time datetime="2024-03-09T13:06:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/09/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%92%8C%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/">二叉树深度搜索和广度搜索</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2024-03-09T05:39:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">常见的排序算法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/04/%E5%AE%9D%E8%B4%B5%E7%9A%84%E4%BA%BA%E7%94%9F%E6%84%8F%E8%A7%81/" class="archive-article-date">
-  	<time datetime="2024-03-04T14:30:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/04/%E5%AE%9D%E8%B4%B5%E7%9A%84%E4%BA%BA%E7%94%9F%E6%84%8F%E8%A7%81/">宝贵的人生意见</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/04/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2024-03-04T14:22:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/04/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">Linux基础知识总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/01/%E5%B9%B8%E7%A6%8F%E7%9A%84%E7%A7%AF%E5%88%86/" class="archive-article-date">
-  	<time datetime="2024-03-01T11:15:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/01/%E5%B9%B8%E7%A6%8F%E7%9A%84%E7%A7%AF%E5%88%86/">幸福的积分</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/02/29/first-md/" class="archive-article-date">
-  	<time datetime="2024-02-29T14:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/02/29/first-md/">first.md</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/02/29/hello-world/" class="archive-article-date">
-  	<time datetime="2024-02-29T13:22:49.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/02/29/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -496,8 +416,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

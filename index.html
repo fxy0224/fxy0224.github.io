@@ -140,6 +140,172 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-c语言实现通用链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/">c语言实现通用链表</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2024-03-19T14:20:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>c语言实现通用链表，用到了指针，函数指针。</p>
+<pre><code class="c++">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+/* 实现通用链表 */
+
+/* 定义节点 */
+typedef struct Node &#123;
+    void *data;
+    struct Node* next;
+&#125; Node;
+
+/* 定义链表 */
+typedef struct LinkedList &#123;
+    Node *head;
+    int size;
+&#125; LinkedList;
+
+void InitLinkedList(LinkedList* list) &#123;
+    list-&gt;head = NULL;
+    list-&gt;size = 0;
+&#125;
+
+void Append(LinkedList* list, void* data) &#123;
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    newNode-&gt;data = data;
+    newNode-&gt;next = NULL;
+
+    /* 如果链表为空 */
+    if (list-&gt;head == NULL) &#123;
+        list-&gt;head = newNode;
+    &#125; else &#123;
+        Node *current = list-&gt;head;
+        while (current-&gt;next != NULL) &#123;
+            current = current-&gt;next;
+        &#125;
+        current-&gt;next = newNode;
+    &#125;
+    list-&gt;size++;
+&#125;
+
+void PrintLinkedList(LinkedList* list, void (*PrintFunc)(void*)) &#123;
+    Node* current = list-&gt;head;
+    while (current != NULL) &#123;
+        PrintFunc(current-&gt;data);
+        current = current-&gt;next;
+    &#125;
+&#125;
+
+void FreeLinkedList(LinkedList* list, void (*FreeFunc)(void*)) &#123;
+    Node *current = list-&gt;head;
+    while (current != NULL) &#123;
+        Node* temp = current;
+        current = current-&gt;next;
+        if (FreeFunc != NULL) &#123;
+            FreeFunc(temp-&gt;data);
+        &#125;
+        free(temp);
+    &#125;
+    list-&gt;head = NULL;
+    list-&gt;size = 0;
+&#125;
+
+
+void PrintInt(void* data) &#123;
+    int *value = (int *)data;
+    print(&quot;%d&quot;, *value);
+&#125;
+
+void FreeInt(void* data) &#123;
+    free(data);
+&#125;
+
+int main() &#123;
+    LinkedList list;
+    InitLinkedList(&amp;list);
+    /* 插入元素 */
+    for (int i = 0; i &lt;= 5; i++) &#123;
+        int *value = (int *)malloc(sizeof(int));
+        *value = i;
+        Append(&amp;list, value);
+    &#125;
+    
+    /* 打印元素 */
+    printf(&quot;Linkede list: &quot;);
+    PrintLinkedList(&amp;list, PrintInt);
+
+    /* 释放链表 */
+    FreeLinkedList(&amp;list, FreeInt);
+
+    return 0;
+&#125;
+</code></pre>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-c-与多线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
