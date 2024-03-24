@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | fxy的个人博客网站</title>
+  <title>SQL语法通关 | fxy的个人博客网站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="fxy的个人博客网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fxy的个人博客网站">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  <meta name="description" content="语法 示例 备注    简单查询 SELECT * FROM student;    查询：字段起别名 SELECT name AS 学生姓名, age AS 学生年龄 FROM student;    查询：运算 SELECT name, score, score * 2 AS double_score FROM student;    条件查询：WHERE SELECT name, sc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL语法通关">
+<meta property="og:url" content="http://example.com/2024/03/24/SQL%E8%AF%AD%E6%B3%95%E9%80%9A%E5%85%B3/index.html">
 <meta property="og:site_name" content="fxy的个人博客网站">
-<meta property="og:description" content="fxy的个人博客网站">
+<meta property="og:description" content="语法 示例 备注    简单查询 SELECT * FROM student;    查询：字段起别名 SELECT name AS 学生姓名, age AS 学生年龄 FROM student;    查询：运算 SELECT name, score, score * 2 AS double_score FROM student;    条件查询：WHERE SELECT name, sc">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-24T05:23:10.000Z">
+<meta property="article:modified_time" content="2024-03-24T05:39:44.673Z">
 <meta property="article:author" content="fxy">
+<meta property="article:tag" content="计算机技术">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="fxy的个人博客网站" type="application/atom+xml">
@@ -138,79 +141,319 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-SQL语法通关" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/02/29/first-md/" class="archive-article-date">
-  	<time datetime="2024-02-29T14:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/02/29/first-md/">first.md</a>
+    <h1 class="article-title" itemprop="name">
+      SQL语法通关
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/02/29/hello-world/" class="archive-article-date">
-  	<time datetime="2024-02-29T13:22:49.439Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-29</time>
+        
+        <a href="/2024/03/24/SQL%E8%AF%AD%E6%B3%95%E9%80%9A%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2024-03-24T05:23:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-24</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/02/29/hello-world/">Hello World</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th align="center">语法</th>
+<th align="center">示例</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">简单查询</td>
+<td align="center">SELECT * FROM student;</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">查询：字段起别名</td>
+<td align="center">SELECT name AS 学生姓名, age AS 学生年龄 FROM student;</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">查询：运算</td>
+<td align="center">SELECT name, score, score * 2 AS double_score FROM student;</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">条件查询：WHERE</td>
+<td align="center">SELECT name, score FROM student WHERE name&#x3D;’鱼皮’</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">条件查询：运算符</td>
+<td align="center">SELECT name, age FROM student WHERE age BETWEEN 25 AND 30</td>
+<td align="center">&gt;, &lt;, &#x3D;, !&#x3D;, BETWEEN a AND b</td>
+</tr>
+<tr>
+<td align="center">条件查询：空值</td>
+<td align="center">SELECT name, age, score FROM student WHERE name is NOT null;</td>
+<td align="center">is null ；is NOT null</td>
+</tr>
+<tr>
+<td align="center">条件查询：模糊查询</td>
+<td align="center">SELECT name, score FROM student WHERE name NOT LIKE “%李%”</td>
+<td align="center">%匹配多个字符；_匹配单个字符</td>
+</tr>
+<tr>
+<td align="center">条件查询：逻辑运算</td>
+<td align="center">SELECT name, score FROM student WHERE name LIKE “%李%” OR score &gt; 500;</td>
+<td align="center">AND; OR; NOT</td>
+</tr>
+<tr>
+<td align="center">去重</td>
+<td align="center">SELECT DISTINCT class_id, exam_num FROM student; （根据class_id, exam_num 组合进行去重）</td>
+<td align="center">DISTINCT</td>
+</tr>
+<tr>
+<td align="center">排序</td>
+<td align="center">SELECT name, age, score FROM student ORDER BY score desc, age ASc;</td>
+<td align="center"><strong>desc：降序; ASc：升序</strong></td>
+</tr>
+<tr>
+<td align="center">截断和偏移</td>
+<td align="center">SELECT name, age FROM student ORDER BY age ASc LIMIT 1,3;</td>
+<td align="center">LIMIT a, b;  从索引位置a开始，截取b个tuple</td>
+</tr>
+<tr>
+<td align="center">条件分支</td>
+<td align="center">SELECT name,  CASE WHEN (age &gt; 60) THEN’老同学’      WHEN (age &gt; 20) THEN’年轻’      ELSE ‘小同学’ END AS age_level FROM student ORDER BY name ASC;</td>
+<td align="center">CASE  WHEN THEN END AS xxx</td>
+</tr>
+<tr>
+<td align="center">时间函数</td>
+<td align="center">SELECT name, DATE() AS ‘当前日期’ FROM student;</td>
+<td align="center"><strong>pg语法</strong>：SELECT CURRENT_DAT,E;（查日期），SELECT now()；（查时间）</td>
+</tr>
+<tr>
+<td align="center">字符串处理</td>
+<td align="center">SELECT id, name, UPPER(name) AS upper_name FROM student WHERE name&#x3D;’热dog’;</td>
+<td align="center">UPPER(name)，LOWER(name), LENGTH(name)</td>
+</tr>
+<tr>
+<td align="center">聚合函数</td>
+<td align="center">SELECT SUM(score) AS total_score,         AVG(score) AS avg_score,         MAX(score) AS max_score,         MIN(score) AS min_score       FROM student;</td>
+<td align="center">SUM, COUNT, AVG, MAX, MIN</td>
+</tr>
+<tr>
+<td align="center">分组聚合：单字段分组</td>
+<td align="center">SELECT class_id, AVG(score) AS avg_score FROM student GROUP BY class_id; （根据class_id分组人，然后计算班级avg分数）</td>
+<td align="center">GROUP BY</td>
+</tr>
+<tr>
+<td align="center">分组聚合：多字段分组</td>
+<td align="center">SELECT  class_id, exam_num, COUNT(name) AS total_num FROM student GROUP BY class_id, exam_num;</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">分组聚合：HAVING子句</td>
+<td align="center">SELECT class_id, SUM(score) AS total_score FROM student GROUP BY class_id HAVING total_score &gt; 150;</td>
+<td align="center">HAVING用于分组之后进行过滤；WHERE是在分组之前进行过滤</td>
+</tr>
+<tr>
+<td align="center">关联查询： CROSS JOIN</td>
+<td align="center">SELECT s.name AS student_name, s.age AS student_age, s.class_id AS class_id, c.name AS class_name FROM student s CROSS JOIN class c</td>
+<td align="center">将两张表关联起来进行查询</td>
+</tr>
+<tr>
+<td align="center">关联查询：INNER JOIN</td>
+<td align="center">SELECT s.name AS student_name, s.age AS student_age, s.class_id AS class_id, c.name AS class_name, c.level AS class_level FROM student s JOIN class c on s.class_id &#x3D; c.id</td>
+<td align="center">SELECT table t1 JOIN table t2 on t1.id &#x3D; t2.num （内联，两表都有的才展示）</td>
+</tr>
+<tr>
+<td align="center">关联查询：OUTER JOIN</td>
+<td align="center">SELECT s.name AS student_name, s.age AS student_age, s.class_id AS class_id, c.name AS class_name, c.level AS class_level FROM student s LEFT JOIN class c on s.class_id &#x3D; c.id;</td>
+<td align="center">left OUTER JOIN; right OUTER JOIN</td>
+</tr>
+<tr>
+<td align="center">子查询</td>
+<td align="center">SELECT  name, score,  class_id FROM student WHERE class_id in (SELECT DISTINCT id FROM class);</td>
+<td align="center">子查询的结果作为条件或者数据来源，然后执行外部查询。</td>
+</tr>
+<tr>
+<td align="center">子查询：exists</td>
+<td align="center">SELECT name, age, class_id FROM  student WHERE NOT exists  SELECT * FROM class  WHERE student.class_id &#x3D; class.id;</td>
+<td align="center">exists子查询，用于检查主查询语句的结果是否满足条件，如果满足，exists返回true，主查询返回结果。</td>
+</tr>
+<tr>
+<td align="center">组合查询</td>
+<td align="center">SELECT name, age, score, class_id FROM student UNION ALL SELECT name, age, score, class_id FROM student_new;</td>
+<td align="center">UNION，将两个SELECT的结果去重输出；UNION ALL 不去重</td>
+</tr>
+<tr>
+<td align="center">开窗函数：SUM OVER</td>
+<td align="center">SELECT id, name, age, score, class_id, AVG(score) OVER (PARTITION BY class_id) AS class_avg_score FROM student;</td>
+<td align="center">开窗函数：允许对分组进行计算并保留原结果集</td>
+</tr>
+<tr>
+<td align="center">开窗函数：SUM OVER ORDER BY</td>
+<td align="center">SELECT id, name, age, score, class_id, SUM(score) OVER (PARTITION BY class_id ORDER BY score ASc) AS class_SUM_score FROM student;</td>
+<td align="center">分组计算并排序</td>
+</tr>
+<tr>
+<td align="center">开窗函数：RANK</td>
+<td align="center">SELECT id, name, age, score, class_id, RANK() OVER (PARTITION BY class_id ORDER BY score desc) AS ranking FROM student;</td>
+<td align="center">RANK：按照某一列分组，然后按照某一字段进行排名</td>
+</tr>
+<tr>
+<td align="center">开窗函数 ：ROW_NUMBER</td>
+<td align="center">SELECT id, name, age, score, class_id, ROW_NUMBER() OVER (PARTITION BY class_id ORDER BY score desc) AS row_number FROM student;</td>
+<td align="center">查询结果集中的每一行分配一个唯一的序号</td>
+</tr>
+<tr>
+<td align="center">开窗函数：LAG&#x2F; LEAD</td>
+<td align="center">SELECT id, name, age, score, class_id, LAG(name, 1, null) OVER (PARTITION BY class_id ORDER BY score desc) AS prev_name, LEAD(name, 1, null) OVER (PARTITION BY class_id ORDER BY score desc) AS next_name  FROM student;</td>
+<td align="center">LAG&#x2F;LEAD用于获取当前行前、后的值，比较相邻行。</td>
+</tr>
+</tbody></table>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>thanks<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2024/03/24/SQL%E8%AF%AD%E6%B3%95%E9%80%9A%E5%85%B3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2024/03/23/%E8%B7%9F%E7%9D%80%E5%88%98%E4%BB%B2%E6%95%AC%E5%AD%A6%E5%8E%86%E5%8F%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">跟着刘仲敬学历史</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -234,8 +477,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
