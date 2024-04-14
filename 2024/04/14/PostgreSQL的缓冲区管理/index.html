@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.1.1">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -16,22 +16,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>归档 - fxy的个人博客网站</title>
+  <title>PostgreSQL的缓冲区管理 - fxy的个人博客网站</title>
 
   
-    <meta name="description" content="fxy的个人博客网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://example.com/archives/2024/02/index.html">
+    <meta name="description" content="为了高效的访问关系表，所有的数据库都自行实现了共享缓冲区。  缓冲区是一块内存区域，用于存储从磁盘读取的数据库页面。缓冲区充当了磁盘和内存之间的缓冲，通过将常用的数据页面保存在内存中，减少了频繁的磁盘访问，从而加快了数据库的响应速度。  缓冲区如何管理 缓冲表：是一个哈希表，存储着buftag和buffer_id之间的映射关系。（使用链表法解决哈希冲突） 缓冲区描述符：对应缓冲池，它存储着缓冲池中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL的缓冲区管理">
+<meta property="og:url" content="http://example.com/2024/04/14/PostgreSQL%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="fxy的个人博客网站">
-<meta property="og:description" content="fxy的个人博客网站">
+<meta property="og:description" content="为了高效的访问关系表，所有的数据库都自行实现了共享缓冲区。  缓冲区是一块内存区域，用于存储从磁盘读取的数据库页面。缓冲区充当了磁盘和内存之间的缓冲，通过将常用的数据页面保存在内存中，减少了频繁的磁盘访问，从而加快了数据库的响应速度。  缓冲区如何管理 缓冲表：是一个哈希表，存储着buftag和buffer_id之间的映射关系。（使用链表法解决哈希冲突） 缓冲区描述符：对应缓冲池，它存储着缓冲池中">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-14T11:51:23.000Z">
+<meta property="article:modified_time" content="2024-04-14T11:54:35.889Z">
 <meta property="article:author" content="fxy">
+<meta property="article:tag" content="计算机技术">
 <meta name="twitter:card" content="summary">
   
   
   
-  
+  <meta name="keywords" content="计算机技术">
 
   <!-- feed -->
   
@@ -46,7 +49,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="undefined" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">fxy的个人博客网站</div></a></div></header>
@@ -58,21 +61,100 @@
 <nav class="menu dis-select"></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/04/14/PostgreSQL%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E7%AE%A1%E7%90%86/"><span class="title">PostgreSQL的缓冲区管理</span></a><a class="item title" href="/2024/03/29/Linux%E6%98%AF%E6%80%8E%E6%A0%B7%E5%B7%A5%E4%BD%9C%E7%9A%84/"><span class="title">Linux是怎样工作的</span></a><a class="item title" href="/2024/03/27/%E5%AE%9A%E6%8A%95/"><span class="title">定投</span></a><a class="item title" href="/2024/03/24/SQL%E8%AF%AD%E6%B3%95%E9%80%9A%E5%85%B3/"><span class="title">SQL语法通关</span></a><a class="item title" href="/2024/03/23/%E8%B7%9F%E7%9D%80%E5%88%98%E4%BB%B2%E6%95%AC%E5%AD%A6%E5%8E%86%E5%8F%B2/"><span class="title">跟着刘仲敬学历史</span></a><a class="item title" href="/2024/03/21/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/"><span class="title">函数指针</span></a><a class="item title" href="/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/"><span class="title">c语言实现通用链表</span></a><a class="item title" href="/2024/03/17/c-%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><span class="title">c++与多线程</span></a><a class="item title" href="/2024/03/09/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%92%8C%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/"><span class="title">二叉树深度搜索和广度搜索</span></a><a class="item title" href="/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"><span class="title">常见的排序算法</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">fxy的个人博客网站</div></a></div></header>
-
- 
 
 
-<div class="navbar top"><nav class="post"><a href="/">近期发布</a><a href="/tags">标签</a><a class="active" href="/archives">归档</a></nav></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2024</div><div class="archive-list"><a class='post fs14' href="/2024/04/14/PostgreSQL%E7%9A%84%E7%BC%93%E5%86%B2%E5%8C%BA%E7%AE%A1%E7%90%86/"><time>04-14</time><span>PostgreSQL的缓冲区管理</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/29/Linux%E6%98%AF%E6%80%8E%E6%A0%B7%E5%B7%A5%E4%BD%9C%E7%9A%84/"><time>03-29</time><span>Linux是怎样工作的</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/27/%E5%AE%9A%E6%8A%95/"><time>03-27</time><span>定投</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/24/SQL%E8%AF%AD%E6%B3%95%E9%80%9A%E5%85%B3/"><time>03-24</time><span>SQL语法通关</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/23/%E8%B7%9F%E7%9D%80%E5%88%98%E4%BB%B2%E6%95%AC%E5%AD%A6%E5%8E%86%E5%8F%B2/"><time>03-23</time><span>跟着刘仲敬学历史</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/21/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/"><time>03-21</time><span>函数指针</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/19/c%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%80%9A%E7%94%A8%E9%93%BE%E8%A1%A8/"><time>03-19</time><span>c语言实现通用链表</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/17/c-%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><time>03-17</time><span>c++与多线程</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/09/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E6%90%9C%E7%B4%A2%E5%92%8C%E5%B9%BF%E5%BA%A6%E6%90%9C%E7%B4%A2/"><time>03-09</time><span>二叉树深度搜索和广度搜索</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/09/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"><time>03-09</time><span>常见的排序算法</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/04/%E5%AE%9D%E8%B4%B5%E7%9A%84%E4%BA%BA%E7%94%9F%E6%84%8F%E8%A7%81/"><time>03-04</time><span>宝贵的人生意见</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/04/Linux%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"><time>03-04</time><span>Linux基础知识总结</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/03/01/%E5%B9%B8%E7%A6%8F%E7%9A%84%E7%A7%AF%E5%88%86/"><time>03-01</time><span>幸福的积分</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/02/29/first-md/"><time>02-29</time><span>first.md</span></a></div><div class="archive-list"><a class='post fs14' href="/2024/02/29/hello-world/"><time>02-29</time><span>Hello World</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-04-14T11:51:23.000Z">2024-04-14</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-04-14T11:54:35.889Z">2024-04-14</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>PostgreSQL的缓冲区管理</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>为了高效的访问关系表，所有的数据库都自行实现了共享缓冲区。</p>
+<blockquote>
+<p>缓冲区是一块内存区域，用于存储从磁盘读取的数据库页面。缓冲区充当了磁盘和内存之间的缓冲，通过将常用的数据页面保存在内存中，减少了频繁的磁盘访问，从而加快了数据库的响应速度。</p>
+</blockquote>
+<h4 id="缓冲区如何管理"><a href="#缓冲区如何管理" class="headerlink" title="缓冲区如何管理"></a>缓冲区如何管理</h4><ol>
+<li>缓冲表：是一个<strong>哈希表</strong>，存储着<strong>buftag</strong>和<strong>buffer_id</strong>之间的映射关系。（使用链表法解决哈希冲突）</li>
+<li>缓冲区描述符：对应缓冲池，它存储着缓冲池中页面的元数据。</li>
+<li>缓冲池：存放数据页面（表、索引，fsm文件，vm文件）。缓冲池是一个数组，通过<strong>buffer_id</strong>检索。</li>
+</ol>
+<h5 id="缓冲区描述符"><a href="#缓冲区描述符" class="headerlink" title="缓冲区描述符"></a>缓冲区描述符</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef struct BufferDesc</span><br><span class="line">&#123;</span><br><span class="line">	BufferTag	tag;			/* ID of page contained in buffer */</span><br><span class="line">	int			buf_id;			/* buffer&#x27;s index number (from 0) */</span><br><span class="line"></span><br><span class="line">	/* state of the tag, containing flags, refcount and usagecount */</span><br><span class="line">	pg_atomic_uint32 state;</span><br><span class="line"></span><br><span class="line">	int			wait_backend_pgprocno;	/* backend of pin-count waiter */</span><br><span class="line">	int			freeNext;		/* link in freelist chain */</span><br><span class="line">	LWLock		content_lock;	/* to lock access to buffer contents */</span><br><span class="line">&#125; BufferDesc;</span><br></pre></td></tr></table></figure>
+
+<h5 id="缓冲区页面如何描述——缓冲区标签"><a href="#缓冲区页面如何描述——缓冲区标签" class="headerlink" title="缓冲区页面如何描述——缓冲区标签"></a>缓冲区页面如何描述——缓冲区标签</h5><p>通过表空间oid，数据库oid，表oid，分支名，block号定位到具体的一个页面。结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">typedef struct buftag</span><br><span class="line">&#123;</span><br><span class="line">	RelFileNode rnode;			/* physical relation identifier */</span><br><span class="line">	ForkNumber	forkNum;</span><br><span class="line">	BlockNumber blockNum;		/* blknum relative to begin of reln */</span><br><span class="line">&#125; BufferTag;</span><br><span class="line"></span><br><span class="line">typedef struct RelFileNode</span><br><span class="line">&#123;</span><br><span class="line">	Oid			spcNode;		/* tablespace */</span><br><span class="line">	Oid			dbNode;			/* database */</span><br><span class="line">	Oid			relNode;		/* relation */</span><br><span class="line">&#125; RelFileNode;</span><br></pre></td></tr></table></figure>
+
+<p>当读取页面时，会发送给缓冲区管理器一个buftag，这样就可以定位到一个页面了。</p>
+<p>当修改页面时，只是修改了缓冲区的页面，然后将之标记为<strong>脏页</strong>，而不是实时写盘。</p>
+<h5 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h5><p>当缓冲池已满，此时访问的页面未在缓冲区中，那么需要在缓冲池中清理掉一个页面，然后将请求的页面加载到该位置，这就是<strong>页面置换</strong>。</p>
+<p>页面置换算法有：LRU，时钟扫描算法。</p>
+<blockquote>
+<p>什么是时钟扫描算法？</p>
+<p>扫描缓冲区描述符，如果页面没有被钉住，并且usage_count（页面在缓冲池中被访问的次数）为0，那么这个页面就是受害者页面，一旦访问的页面没有加载到缓冲池，那么受害者页面就会被替换成即将访问的页面。</p>
+</blockquote>
+<h5 id="脏页刷盘"><a href="#脏页刷盘" class="headerlink" title="脏页刷盘"></a>脏页刷盘</h5><p>postgresql中，脏页刷盘是由以下两个进程处理：</p>
+<ol>
+<li>CheckPoint进程</li>
+<li>BigWriter进程</li>
+</ol>
+<p>两者都具有脏页刷盘的功能。</p>
+<p>CheckPoint的作用是将检查点记录到wal文件，服务于数据库故障恢复。</p>
+<p>BigWriter的作用是通过少量多次的脏页刷盘，避免密集刷盘对性能的影响。</p>
+<h5 id="缓冲表锁-（是缓冲区管理器同步机制）"><a href="#缓冲表锁-（是缓冲区管理器同步机制）" class="headerlink" title="缓冲表锁 （是缓冲区管理器同步机制）"></a>缓冲表锁 （是缓冲区管理器同步机制）</h5><h4 id="环形缓冲区"><a href="#环形缓冲区" class="headerlink" title="环形缓冲区"></a>环形缓冲区</h4><p>用途：读写大表时用环形缓冲区而不是缓冲池。</p>
+<p>什么情况在Postgresql会使用环形缓冲区而不是缓冲池？</p>
+<p>需要满足以下条件？</p>
+<ol>
+<li>批量读取，扫描读取的数据超过缓冲池的1&#x2F;4。【环形缓冲区的大小为256KB】</li>
+<li>批量写入。【环形缓冲区的大小为16MB】</li>
+<li>vacuum，【环形缓冲区的大小为256KB】</li>
+</ol>
+<p><strong>环形缓冲区使用完立即被释放</strong></p>
+<p>实用环形缓冲区可以避免缓冲区缓存命中率低的问题。</p>
+<p>256KB的大小设计原则是因为这个大小可以放在L2缓存中。</p>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/03/29/Linux%E6%98%AF%E6%80%8E%E6%A0%B7%E5%B7%A5%E4%BD%9C%E7%9A%84/">Linux是怎样工作的</a></div></section></div>
+
+
+
+
+
+
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">fxy</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86"><span class="toc-text">缓冲区如何管理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-text">缓冲区描述符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E9%A1%B5%E9%9D%A2%E5%A6%82%E4%BD%95%E6%8F%8F%E8%BF%B0%E2%80%94%E2%80%94%E7%BC%93%E5%86%B2%E5%8C%BA%E6%A0%87%E7%AD%BE"><span class="toc-text">缓冲区页面如何描述——缓冲区标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E7%BD%AE%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-text">页面置换算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%84%8F%E9%A1%B5%E5%88%B7%E7%9B%98"><span class="toc-text">脏页刷盘</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E8%A1%A8%E9%94%81-%EF%BC%88%E6%98%AF%E7%BC%93%E5%86%B2%E5%8C%BA%E7%AE%A1%E7%90%86%E5%99%A8%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6%EF%BC%89"><span class="toc-text">缓冲表锁 （是缓冲区管理器同步机制）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AF%E5%BD%A2%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">环形缓冲区</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
